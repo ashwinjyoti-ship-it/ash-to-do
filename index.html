@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#d8d1bf" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icon.svg" />
+  <title>Ashwin List — a calmer way to do</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="dark.css" />
+  <link rel="stylesheet" href="canvas.css?v=2" />
+  <script>if(location.protocol!=='file:'){const s=document.createElement('script');s.src='https://js.puter.com/v2/';s.defer=true;document.head.appendChild(s)}</script>
+  <script src="app.js?u=1" defer></script>
+  <script src="canvas-fix.js?v=2" defer></script>
+  <script>if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js'));</script>
+</head>
+<body>
+  <main class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">✦</span><span>ashwin list</span></div>
+      <nav class="nav" aria-label="Task views">
+        <button class="nav-item active" data-filter="all"><span class="nav-icon">◌</span>All things <b id="all-count">0</b></button>
+        <button class="nav-item" data-filter="today"><span class="nav-icon">◐</span>Today <b id="today-count">0</b></button>
+        <button class="nav-item" data-filter="upcoming"><span class="nav-icon">⌁</span>Upcoming</button>
+        <button class="nav-item" data-filter="completed"><span class="nav-icon">✓</span>Completed</button>
+        <button class="nav-item" data-filter="canvas"><span class="nav-icon">▧</span>Agent canvas</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="sync-status"><i></i><span id="sync-text">Saved on this device</span></div>
+        <button id="sign-in" class="account-btn">Connect Puter sync <span>↗</span></button>
+      </div>
+    </aside>
+    <section class="workspace">
+      <header class="topbar">
+        <div class="date-lockup"><p id="weekday">Thursday</p><h1 id="date">August 28</h1></div>
+        <div class="top-actions"><button class="icon-btn" id="theme-toggle" aria-label="Toggle contrast">◒</button><button class="avatar" id="settings-toggle" aria-expanded="false" aria-controls="settings-panel">A</button><section class="settings-panel hidden" id="settings-panel"><p class="eyebrow">Agent connection</p><h3>Agent API</h3><code id="task-api-url">Loading…</code><button class="copy-endpoint" data-copy="items">Copy agent endpoint</button><p class="settings-note">One endpoint for both tasks and finished rich-text writing. Use <code>kind: "task"</code> or <code>kind: "document"</code>.</p></section></div>
+      </header>
+      <section class="focus-card">
+        <div class="sun-orb">☼</div>
+        <div><p class="eyebrow">A gentle reminder</p><h2>You don’t have to do<br><em>everything</em> today.</h2><p class="subcopy">Choose what makes the day feel meaningful.</p></div>
+        <div class="progress-wrap"><div class="progress-ring"><span id="progress-number">0%</span></div><small id="progress-caption">0 of 0 complete</small></div>
+      </section>
+      <section class="task-area">
+        <div class="section-heading"><div><p class="eyebrow" id="view-label">Today’s rhythm</p><h2 id="view-title">Things to tend to</h2></div><button class="new-task" id="new-task">+ <span>Add a thing</span></button></div>
+        <form id="task-form" class="task-form hidden">
+          <input id="task-input" maxlength="120" placeholder="What deserves your attention?" autocomplete="off" required />
+          <select id="task-tag" aria-label="Task category"><option value="work">Work</option><option value="personal">Personal</option><option value="ritual">Ritual</option></select>
+          <select id="task-date" aria-label="Due date"><option value="today">Today</option><option value="upcoming">This week</option></select>
+          <button>Add</button>
+        </form>
+        <div id="task-list" class="task-list" aria-live="polite"></div>
+        <section id="agent-canvas" class="agent-canvas hidden"><div class="canvas-heading"><div><p class="eyebrow">Agent handoff</p><h2 id="canvas-title">A blank page, ready</h2></div><button id="copy-canvas" class="new-task">Copy formatting</button></div><p class="canvas-help">Anything an agent puts here stays cleanly formatted. Select it yourself, or use Copy formatting to paste it directly into email, Word, or another document.</p><article id="canvas-content" class="canvas-paper" contenteditable="true" spellcheck="true"><h2>Agent canvas</h2><p>Ask an agent to write a quote, proposal, note, or email and send the finished HTML to the Writing API. It will appear here as a real document—not code.</p></article></section>
+        <div id="empty-state" class="empty-state hidden"><span>✦</span><h3>Nothing here, and that’s lovely.</h3><p>Add a small thing to begin.</p></div>
+      </section>
+      <footer>Made with calm in mind · <a href="https://developer.puter.com" target="_blank" rel="noopener">Powered by Puter</a></footer>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "collections": {
+    "items": {
+      "fields": {
+        "kind": { "type": "string", "required": true, "maxLength": 16 },
+        "text": { "type": "string", "maxLength": 120, "trim": true },
+        "tag": { "type": "string", "maxLength": 16 },
+        "when": { "type": "string", "maxLength": 16 },
+        "done": { "type": "boolean", "default": false },
+        "title": { "type": "string", "maxLength": 120, "trim": true },
+        "content": { "type": "string", "maxLength": 12000 }
+      },
+      "access": { "read": "public", "insert": "public", "update": "owner", "delete": "owner" },
+      "rateLimit": "30/hour/ip"
+    }
+  }
+}

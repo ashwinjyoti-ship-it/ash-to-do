@@ -1,0 +1,10 @@
+{
+  "name": "Ashwin List",
+  "short_name": "Ashwin List",
+  "description": "A calmer, earth-toned place for tasks and agent handoffs.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#d8d1bf",
+  "theme_color": "#62755e",
+  "icons": [{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
